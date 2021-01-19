@@ -1,20 +1,27 @@
 import { createRouter, createWebHashHistory } from "vue-router";
 
-const LayoutPage = () => import("../views/layoutPage/LayoutPage.vue");
+const Home = () => import("../views/Home.vue");
+const User = () => import("../components/user/User.vue");
 
 const routes = [
   {
     path: "",
-    redirect: "layoutPage"
+    redirect: "Home"
   },
   {
     path: "/",
-    component: LayoutPage
+    component: Home
   },
   {
-    path: "/layoutPage",
-    component: LayoutPage,
-  },
+    path: "/home",
+    component: Home,
+    children: [
+      {
+        path: "/user",
+        component: User
+      }
+    ]
+  }
 ];
 
 const router = createRouter({
